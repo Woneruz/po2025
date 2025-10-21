@@ -56,14 +56,13 @@ public class CodingBat {
         System.out.println("Test firstTwo(\"a\"): " + tester.firstTwo("a"));       // Oczekiwane: a
 
         // 4. Testy dla metody has12
-        // Musimy ręcznie stworzyć tablice do testów
         int[] testArray1 = {1, 3, 2};
         int[] testArray2 = {3, 1, 4, 5, 2};
-        int[] testArray3 = {2, 1, 4}; // '2' jest przed '1'
+        int[] testArray3 = {2, 1, 4}; // 2 jest przed 1
 
         System.out.println("Test has12({1, 3, 2}): " + tester.has12(testArray1)); // Oczekiwane: true
         System.out.println("Test has12({3, 1, 4, 5, 2}): " + tester.has12(testArray2)); // Oczekiwane: true
         System.out.println("Test has12({2, 1, 4}): " + tester.has12(testArray3)); // Oczekiwane: false
     }
-    // --- KONIEC DODANEGO KODU ---
+
 }
