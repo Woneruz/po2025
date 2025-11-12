@@ -113,9 +113,13 @@ public class Samochod {
             return;
         }
 
-        System.out.println("Jadę do celu...");
-        // Prosta symulacja - teleportuj się do celu xd
-        this.aktualnaPozycja = cel;
+//        System.out.println("Jadę do celu...");
+//        // Prosta symulacja - teleportuj się do celu xd
+//
+//        this.aktualnaPozycja = cel;
+
+        aktualnaPozycja.przenies(cel.getX(), cel.getY());
         System.out.println("Dojechałem. Nowa pozycja: " + getAktPozycja());
+
     }
 }

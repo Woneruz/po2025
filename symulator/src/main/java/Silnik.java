@@ -32,7 +32,7 @@ public class Silnik extends Komponent {
     // Zatrzymywanie
     public void zatrzymaj() {
         if (czyUruchomiony) {
-            this.obroty = 0; // Zeruje obroty [cite: 98]
+            this.obroty = 0; // Zeruje obroty
             this.czyUruchomiony = false;
             System.out.println("Silnik zatrzymany.");
         } else {
