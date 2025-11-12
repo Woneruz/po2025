@@ -15,6 +15,9 @@ public class Samochod {
     private double predkoscMax;
     private double aktualnaPredkosc; // Domyślnie 0
 
+    // Stałe używane w obliczeniach prędkości i jazdy samochodu itp
+    private static final double PRZELOZENIE_MOSTU = 3.42; // przykładowe przełożenie dyferencjału
+    private static final double OBWOD_KOLA_M = 2.04;      // obwód koła w metrach (np. ~2.04 m)
 
 
     // Konstruktor klasy Samochod
@@ -72,9 +75,18 @@ public class Samochod {
 
     // Zwraca aktualną prędkość samochodu.
     public double getAktPredkosc() {
-        // Logika obliczania prędkości byłaby skomplikowana (zależna od obrotów, biegu, przełożenia).
-        // Więc zwracam z góry ustawioną wartość.
-        return aktualnaPredkosc;
+        double przelozenieBiegu = this.skrzynia.getAktPrzelozenie();
+
+        if (!stanWlaczenia || przelozenieBiegu <= 0.0) {
+            return 0.0;
+        }
+
+        double engineRpm = this.silnik.getObroty();
+        double wheelRpm = engineRpm / (przelozenieBiegu * PRZELOZENIE_MOSTU);
+        double metryNaMinute = wheelRpm * OBWOD_KOLA_M;
+        double kmh = (metryNaMinute * 60.0) / 1000.0;
+        return Math.min(kmh, predkoscMax);
+
     }
 
     // Zwraca aktualną pozycję samochodu jako String.
