@@ -21,7 +21,7 @@ public class Silnik extends Komponent {
     // Uruchamianie
     public void uruchom() {
         if (!czyUruchomiony) {
-            this.obroty = 800; // Ustawia obroty na wartość początkową [cite: 97]
+            this.obroty = 800; // Ustawia obroty na wartość początkową
             this.czyUruchomiony = true;
             System.out.println("Silnik uruchomiony. Obroty biegu jałowego: 800");
         } else {

@@ -99,7 +99,7 @@ public class Samochod {
         return this.model;
     }
 
-    //
+    // Gettery komponentów
 
     public Silnik getSilnik() {
         return silnik;
@@ -114,8 +114,8 @@ public class Samochod {
     }
 
     // Metoda symulująca jazdę do określonej pozycji.
-
     public void jedzDo(Pozycja cel) {
+        // Walidacja stanu samochodu
         if (!stanWlaczenia) {
             System.out.println("Nie można jechać, silnik wyłączony!");
             return;
@@ -125,13 +125,18 @@ public class Samochod {
             return;
         }
 
-//        System.out.println("Jadę do celu...");
-//        // Prosta symulacja - teleportuj się do celu xd
-//
-//        this.aktualnaPozycja = cel;
+        // 1. Pobieramy fizyczną prędkość (zależną od silnika i skrzyni)
+        double predkosc = getAktPredkosc();
 
-        aktualnaPozycja.przenies(cel.getX(), cel.getY());
+        // 2. Sprawdzamy czy mamy moc
+        if (predkosc <= 0.0) {
+            System.out.println("Samochód stoi (zbyt małe obroty lub bieg jałowy).");
+            return;
+        }
+
+        // 3. Przekazujemy prędkość do metody przenies
+        aktualnaPozycja.przenies(cel.getX(), cel.getY(), predkosc);
+
         System.out.println("Dojechałem. Nowa pozycja: " + getAktPozycja());
-
     }
 }
